@@ -3,6 +3,8 @@ import java.io.StringWriter;
 public class FizzBuzz {
     private int startIndex;
     private int endIndex;
+    private final int fizzValue = 3;
+    private final int buzzValue = 5;
 
 
     public FizzBuzz(int start, int end){
@@ -12,18 +14,22 @@ public class FizzBuzz {
 
     public void generate(StringWriter out){
         for(int index = startIndex; index < endIndex+1; index++){
-            out.write(index + ": " + indexIsFizz(index) + indexIsBuzz(index) + "\n");
+            out.write(generatedLine(index));
         }
     }
 
-    public String indexIsFizz(int indexToEvaluate){
-        String returnedString = (indexToEvaluate%3 == 0)? "Fizz":"";
+    public String indexIsFizzText(int indexToEvaluate){
+        String returnedString = (indexToEvaluate%fizzValue == 0)? "Fizz":"";
         return returnedString;
     }
 
-    public String indexIsBuzz(int indexToEvaluate){
-        String returnedString = (indexToEvaluate%5 == 0)? "Buzz":"";
+    public String indexIsBuzzText(int indexToEvaluate){
+        String returnedString = (indexToEvaluate%buzzValue == 0)? "Buzz":"";
         return returnedString;
+    }
+
+    public String generatedLine(int index){
+        return index + ": " + indexIsFizzText(index) + indexIsBuzzText(index) + "\n";
     }
 }
 
